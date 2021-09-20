@@ -30,6 +30,13 @@ public class Game {
         } else {
             System.out.println("loser");
         }
+
+        if (input.toLowerCase().equals("l") && card1.getFaceValue() > card2.getFaceValue()) {
+            System.out.println("Your correct");
+
+        } else {
+            System.out.println("loser");
+        }
     }
 
 }
