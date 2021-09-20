@@ -33,6 +33,12 @@ public class Game {
         } else {
             System.out.println("loser");
         }
+
+        System.out.println("Continue Playing? y/n?");
+        String quit = scanner.nextLine();
+        if (quit.toLowerCase().equals("y")) {
+            System.exit(0);
+        }
     }
 
 
