@@ -21,7 +21,7 @@ public class Card {
     public String display() {
         String outPut = "";
         switch (faceValue) {
-            case 1 -> outPut = "AC";
+            case 14 -> outPut = "AC";
             case 11 -> outPut = "JK";
             case 12 -> outPut = "QU";
             case 13 -> outPut = "KI";
