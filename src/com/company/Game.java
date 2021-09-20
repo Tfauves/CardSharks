@@ -10,34 +10,35 @@ public class Game {
     public Scanner scanner = new Scanner(System.in);
     private Card card1;
     private Card card2;
+    private boolean isActive = true;
 
 
     public void startGame() {
+        while (isActive) {
+            Deck cardDeck = new StandardDeck();
+            cardDeck.shuffle();
+            card1 = cardDeck.deal();
+            System.out.println(card1.display());
+            System.out.println("Is the next card (l)ower or (h)igher?");
+            String input = scanner.nextLine();
+            card2 = cardDeck.deal();
+            System.out.println(card2.display());
 
-        Deck cardDeck = new StandardDeck();
-        cardDeck.shuffle();
-        card1 = cardDeck.deal();
-        System.out.println(card1.display());
-        System.out.println("Is the next card (l)ower or (h)igher?");
-        String input = scanner.nextLine();
-        card2 = cardDeck.deal();
-        System.out.println(card2.display());
+            if (input.toLowerCase().equals("h") && card1.getFaceValue() < card2.getFaceValue()) {
+                System.out.println("Your correct");
 
-        if (input.toLowerCase().equals("h") && card1.getFaceValue() < card2.getFaceValue()) {
-            System.out.println("Your correct");
+            } else if (input.toLowerCase().equals("l") && card1.getFaceValue() > card2.getFaceValue()) {
+                System.out.println("Your correct");
 
-        }
-        else if (input.toLowerCase().equals("l") && card1.getFaceValue() > card2.getFaceValue()) {
-            System.out.println("Your correct");
+            } else {
+                System.out.println("loser");
+            }
 
-        } else {
-            System.out.println("loser");
-        }
-
-        System.out.println("Continue Playing? y/n?");
-        String quit = scanner.nextLine();
-        if (quit.toLowerCase().equals("y")) {
-            System.exit(0);
+            System.out.println("Continue Playing? y/n?");
+            String quit = scanner.nextLine();
+            if (quit.toLowerCase().equals("n")) {
+                isActive = false;
+            }
         }
     }
 
