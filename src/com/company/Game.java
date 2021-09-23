@@ -1,13 +1,10 @@
 package com.company;
-import com.company.cardGame.Card;
-import com.company.cardGame.Deck;
-import com.company.cardGame.StandardDeck;
-
-import java.util.Scanner;
-
+import com.company.cardGame.console.UI;
+import com.company.cardGame.deck.Card;
+import com.company.cardGame.deck.Deck;
+import com.company.cardGame.deck.StandardDeck;
 
 public class Game {
-    public Scanner scanner = new Scanner(System.in);
     private Card card1;
     private Card card2;
     private boolean isActive = true;
@@ -20,7 +17,7 @@ public class Game {
             card1 = cardDeck.deal();
             System.out.println(card1.display());
             System.out.println("Is the next card (l)ower or (h)igher?");
-            String input = scanner.nextLine();
+            String input = UI.scanner.nextLine();
             card2 = cardDeck.deal();
             System.out.println(card2.display());
 
@@ -35,7 +32,7 @@ public class Game {
             }
 
             System.out.println("Continue Playing? y/n?");
-            String quit = scanner.nextLine();
+            String quit = UI.scanner.nextLine();
             if (quit.toLowerCase().equals("n")) {
                 isActive = false;
             }
