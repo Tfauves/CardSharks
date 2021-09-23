@@ -1,4 +1,4 @@
-package com.company;
+package com.company.cardGame.cardSharks;
 import com.company.cardGame.console.UI;
 import com.company.cardGame.deck.Card;
 import com.company.cardGame.deck.Deck;
