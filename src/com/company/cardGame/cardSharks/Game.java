@@ -2,7 +2,7 @@ package com.company.cardGame.cardSharks;
 import com.company.cardGame.console.UI;
 import com.company.cardGame.deck.Card;
 import com.company.cardGame.deck.Deck;
-import com.company.cardGame.deck.StandardDeck;
+import com.company.cardGame.deck.PlayerDeck;
 
 public class Game {
     private Card card1;
@@ -12,7 +12,7 @@ public class Game {
 
     public void startGame() {
         while (isActive) {
-            Deck cardDeck = new StandardDeck();
+            Deck cardDeck = new PlayerDeck();
             cardDeck.shuffle();
             card1 = cardDeck.deal();
             System.out.println(card1.display());
