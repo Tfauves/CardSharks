@@ -37,6 +37,7 @@ public class Card {
     // TODO: 11/25/2022 test method 
     public void turnCard() {
         setFaceUp(!isFaceUp);
+        display();
     }
 
     public int getFaceValue() {

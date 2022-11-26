@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Run {
     private List<Card> cards = new ArrayList<>();
+    private boolean isfrozen = false;
 //    private Player player;
 
     public void addCard(Card card) {
@@ -14,11 +15,13 @@ public class Run {
     }
 
     public String displayRun() {
-        String outPut = "";
+        StringBuilder outPut = new StringBuilder();
         for (Card card : cards) {
-            outPut += card.display() + " ";
+            outPut.append(card.display()).append(" ");
         }
-        return outPut.toString().trim();
+        return outPut.toString().toString().trim();
     }
+
+
 
 }
