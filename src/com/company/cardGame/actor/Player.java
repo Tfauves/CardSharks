@@ -1,67 +1,76 @@
 package com.company.cardGame.actor;
 
 import com.company.cardGame.cardSharks.Run;
+import com.company.cardGame.console.UI;
+import com.company.cardGame.deck.Deck;
 import com.company.cardGame.deck.PlayerDeck;
 
-public class Player {
-    private String name;
-    private PlayerDeck playerDeck;
-    private Run run;
-    private boolean isTurn;
-    private int matchWins;
-    private int gameWins;
+import java.io.Console;
 
-    public Player() {};
+public class Player implements Actor {
+    private String name;
+    private boolean isActivePlayer;
+    private int matchesWon = 0;
+    private int gamesWon = 0;
+    private int actionsCount;
+    private Deck deck;
 
     public Player(String name) {
         this.name = name;
+        deck = new PlayerDeck();
     }
 
+    public String getAvailableActions(Run run) {
+        actionsCount = 3;
+        StringBuilder output = new StringBuilder();
+        System.out.println("------------------------------------------------");
+        output.append("1. Guess\n2. Freeze");
+
+        return output.toString();
+    }
+
+
+    @Override
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    @Override
+    public int getAction(Run run) {
+        System.out.println(run.displayRun());
+//        System.out.println(hand.getValue());
+        return UI.getInt(getAvailableActions(run), 1, actionsCount, "invalid action");
     }
 
-    public PlayerDeck getPlayerDeck() {
-        return playerDeck;
+    public Deck getDeck() {
+        return deck;
     }
 
-    public void setPlayerDeck(PlayerDeck playerDeck) {
-        this.playerDeck = playerDeck;
+    public void setDeck(Deck deck) {
+        this.deck = deck;
     }
 
-    public Run getRun() {
-        return run;
+    public boolean isActivePlayer() {
+        return isActivePlayer;
     }
 
-    public void setRun(Run run) {
-        this.run = run;
+    public void setActivePlayer(boolean activePlayer) {
+        isActivePlayer = activePlayer;
     }
 
-    public boolean isTurn() {
-        return isTurn;
+    public int getMatchesWon() {
+        return matchesWon;
     }
 
-    public void setTurn(boolean turn) {
-        isTurn = turn;
+    public void setMatchesWon(int matchesWon) {
+        this.matchesWon = matchesWon;
     }
 
-    public int getMatchWins() {
-        return matchWins;
+    public int getGamesWon() {
+        return gamesWon;
     }
 
-    public void setMatchWins(int matchWins) {
-        this.matchWins = matchWins;
-    }
-
-    public int getGameWins() {
-        return gameWins;
-    }
-
-    public void setGameWins(int gameWins) {
-        this.gameWins = gameWins;
+    public void setGamesWon(int gamesWon) {
+        this.gamesWon = gamesWon;
     }
 }
