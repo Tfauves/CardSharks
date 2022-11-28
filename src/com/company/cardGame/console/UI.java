@@ -1,11 +1,30 @@
 package com.company.cardGame.console;
 
+import com.company.cardGame.cardSharks.Run;
+
 import java.util.Scanner;
 
 public class UI {
     public static final Scanner scanner = new Scanner(System.in);
 
-    public int getInt(String prompt, int min, int max, String errMsg) {
+    public static void showRunWithIndex(Run activeRun) {
+        System.out.println(activeRun.displayRun());
+        System.out.println("--------------------------------------------------------");
+//        System.out.println("               Card Selection Index"                     );
+        for (int i = 1; i < activeRun.getCards().size() + 1; i++) {
+            System.out.print(i + "    ");
+        }
+    }
+
+    public static void spaces() {
+        int spaceCounter = 0;
+        while (spaceCounter < 55) {
+
+            System.out.println();
+            spaceCounter++;
+        }
+    }
+    public static int getInt(String prompt, int min, int max, String errMsg) {
         int option = min -1;
         do {
             System.out.println(prompt);
@@ -20,7 +39,7 @@ public class UI {
         return option;
     }
 
-    public String getString(String prompt, boolean isRequired) {
+    public static String getString(String prompt, boolean isRequired) {
         String input;
         do {
             System.out.println(prompt);
@@ -34,5 +53,6 @@ public class UI {
         } while(true);
         return input;
     }
+
 
 }
